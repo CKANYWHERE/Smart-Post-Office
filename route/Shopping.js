@@ -3,6 +3,6 @@ var express = require('express');
 var app = express();
 
 module.exports = function () {
-    //app.get('/api/Shopping', ShoppingController.getMainPage);
+    app.post('/postpayment', ShoppingController.PostPayment);
     return app;
 };
