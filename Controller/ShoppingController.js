@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var payment = require('../Models/payment');
 var group = require('../Models/group');
-var async = require('async')
+var async = require('async');
 
 module.exports = {
 
@@ -29,32 +29,34 @@ module.exports = {
                 console.log('saved');
             }
         });
+        console.log(req.body);
         
-        if(req.body.isGroup == "on"){
-            async.each(group.name,function(data,callback){
-                console.log("asdf");
-                
-                if(data == req.body.address){
-                    group.update({$push:{ref:newPayment._id}})
-                }else{
+        if(req.body.option == "on"){
+            group.findOne({name:req.body.address}).exec(function(err,findedgroup){
+                if(err){
+                    console.log(err); 
+                }
+                if(findedgroup == null){
                     var newGroup = new group({
                         name : req.body.address,
                         ref : newPayment._id
                     });
-
                     newGroup.save(function(err,data){
                         if(err){
                             console.log(err);
-                        }else{
-                            res.send('success');
+                        }else{ 
+                            console.log(data);
                         }
                     });
                 }
-                callback(null);
+                else{
+                    group.update({$push:{ref:newPayment._id}},function(data){
+                        console.log(data);  
+                    });
+                }
             });
         }
-
-        res.send('no group success');
+        res.send('success');
    },
 
    GetAdminPage : function(req,res){
