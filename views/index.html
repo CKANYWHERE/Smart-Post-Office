@@ -157,23 +157,30 @@
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
-                <a href="#">
-                    <img src="images/icon/logo.png" alt="Cool Admin" />
-                </a>
+                    <div class="header-button">
+                            <div class="noti-wrap">
+                            
+                              
+                            <div class="account-wrap">
+                                
+                                  
+                                    <div class="content">
+                                        <a class="js-acc-btn" href="#">user1</a>
+                                    </div>
+                            
+                        </div>
+                    </div>
+            </div>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
                         <li class="has-sub">
                             <a class="js-arrow" href="#">
-                                <i class="fas fa-tachometer-alt"></i>payment</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                          
-                        <li class="active">
-                            <a href="form.html">
-                                <i class="far fa-check-square"></i>Forms</a>
-                        </li>
-                      
+                                <i class="fas fa-tachometer-alt"></i>결제</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list"></ul>
+                            <a class="" href="#">
+                                    <i class=""></i><img src="/images/card.jpg"></a>
                         </li>
                     </ul>
                 </nav>
@@ -189,54 +196,12 @@
                     <div class="container-fluid">
                         <div class="header-wrap">
                             <form class="form-header" action="" method="POST">
-                                <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
+                                <input class="au-input au-input--xl" type="text" name="search" placeholder="결제 정보 찾아 보기..." />
                                 <button class="au-btn--submit" type="submit">
                                     <i class="zmdi zmdi-search"></i>
                                 </button>
                             </form>
-                            <div class="header-button">
-                                <div class="noti-wrap">
-                                
-                                  
-                                <div class="account-wrap">
-                                    <div class="account-item clearfix js-item-menu">
-                                      
-                                        <div class="content">
-                                            <a class="js-acc-btn" href="#">user1</a>
-                                        </div>
-                                        <div class="account-dropdown js-dropdown">
-                                            <div class="info clearfix">
-                                
-                                                <div class="content">
-                                                    <h5 class="name">
-                                                        <a href="#">user1</a>
-                                                    </h5>
-                                                    <span class="email">user1@example.com</span>
-                                                </div>
-                                            </div>
-                                            <div class="account-dropdown__body">
-                                                <div class="account-dropdown__item">
-                                                    <a href="#">
-                                                        <i class="zmdi zmdi-account"></i>Account</a>
-                                                </div>
-                                                <div class="account-dropdown__item">
-                                                    <a href="#">
-                                                        <i class="zmdi zmdi-settings"></i>Setting</a>
-                                                </div>
-                                                <div class="account-dropdown__item">
-                                                    <a href="#">
-                                                        <i class="zmdi zmdi-money-box"></i>Billing</a>
-                                                </div>
-                                            </div>
-                                            <div class="account-dropdown__footer">
-                                                <a href="#">
-                                                    <i class="zmdi zmdi-power"></i>Logout</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </header>
@@ -248,7 +213,7 @@
                     <div class="container-fluid">
                         <div class="row">
                      
-                            <div class="col-lg-6">
+                            <div class="col-lg-12">
                                 <div class="card">
                                     <div class="card-header">카드 정보</div>
                                     <div class="card-body">
@@ -256,11 +221,15 @@
                                             <h3 class="text-center title-2">결제</h3>
                                         </div>
                                         <hr>
-                                        <form action="/api/Shopping/postpayment" method="post" novalidate="novalidate">
+                                        <form action="/postpayment" method="post" novalidate="novalidate">
                                                 <div class="form-group">
                                                         <label for="address" class=" form-control-label">주소입력</label>
                                                         <input name = "address"type="text" id="address" placeholder="주소를 입력해 주세요" class="form-control">
                                                     </div>
+                                                    <div class="form-group">
+                                                            <label for="address" class=" form-control-label">상세 주소입력</label>
+                                                            <input name = "detailadress"type="text" id="detailadress" placeholder="주소를 입력해 주세요" class="form-control">
+                                                        </div>
                                                     <div class="row form-group">
                                                         <div class="col-6">
                                                             <div class="form-group">

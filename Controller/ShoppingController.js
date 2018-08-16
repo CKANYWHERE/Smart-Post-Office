@@ -10,6 +10,7 @@ module.exports = {
         var newPayment = new payment({
             _id: new mongoose.Types.ObjectId(),
             address : req.body.address,
+            detailadress : req.body.detailadress,
             reciver : req.body.reciver,
             sender : req.body.sender,
             phone : req.body.phone,
@@ -60,7 +61,6 @@ module.exports = {
    },
 
    GetAdminPage : function(req,res){
-
+        res.render('admin',{res:"asdf"});
    }
-
 };

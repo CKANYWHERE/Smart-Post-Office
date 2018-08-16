@@ -3,6 +3,7 @@ var Schema = mongoose.Schema;
 
 var PaymentSchema = new Schema({
     address : {type:String},
+    detailadress: {type:String},
     reciver : {type:String},
     sender : {type:String},
     phone : {type:String},
@@ -11,7 +12,8 @@ var PaymentSchema = new Schema({
     cardname : {type:String},
     cardnumber : {type:String},
     expiration : {type:String},
-    cardpassword:{type:String}
+    cardpassword:{type:String},
+    syncTime :{type: Date, default: Date.now},
 });
 
 var payment = mongoose.model('Payment',PaymentSchema);

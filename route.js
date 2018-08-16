@@ -1,5 +1,5 @@
 var shoppingRoute = require('./route/Shopping');
 
 module.exports = function(app) {
-    app.use('/api/Shopping',shoppingRoute());
+    app.use('/',shoppingRoute());
 };
