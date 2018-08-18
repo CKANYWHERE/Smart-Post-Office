@@ -228,8 +228,8 @@
                                 </table>
                             </div>
                         </div>
-            <div class="row">
-                <div class="col-md-12">
+                <div class="col">
+                <div class="col-mg-12 col-md-12">
                         <h2 class="title-1 m-b-25">묶음 배송 정보</h2>
                     <div class="table-responsive table-responsive-data2">
                         <table class="table table-data2">
@@ -241,10 +241,10 @@
                                             <span class="au-checkmark"></span>
                                         </label>
                                     </th>
-                                    <th>배송번호</th>
+                                    <th>번호</th>
                                     <th>주소</th>          
                                     <th>날짜</th>
-                                    <th>묶음 개수</th>
+                                    <th>개수</th>
                                 </tr>
                             </thead>
                             <%if(group.length>0){%>
@@ -278,6 +278,65 @@
                                     </td>
                                 </tr>
                                 <%})%>
+                            
+                                <%} else {%>
+                                <tr>
+                                    <td colspan="5">게시물이 없습니다.</td>
+                                </tr>
+                        <%}%>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                </div>
+            &nbsp;
+            <div class="col">
+                <div class="col-mg-12 col-md-12">
+                        <h2 class="title-1 m-b-25">일반 배송 정보</h2>
+                    <div class="table-responsive table-responsive-data2">
+                        <table class="table table-data2">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <label class="au-checkbox">
+                                            <input type="checkbox">
+                                            <span class="au-checkmark"></span>
+                                        </label>
+                                    </th>
+                                    <th>번호</th>
+                                    <th>주소</th>          
+                                    <th>상세주소</th>
+                                    <th>날짜</th>
+                                </tr>
+                            </thead>
+                            <%if(group.length>0){%>
+                                <%var i = 0;%>
+                                <%normal.forEach(function(item){%>
+                                <%i++;%>
+                            <tbody>
+                                <tr class="tr-shadow">
+                                    <td>
+                                        <label class="au-checkbox">
+                                            <input type="checkbox">
+                                            <span class="au-checkmark"></span>
+                                        </label>
+                                    </td>
+                                    <td><%=i%></td>
+                                    <td><%=item.address%></td>
+                                    <td><%=item.detailadress%></td>
+                                    <td><%=item.syncTime%></td>
+                                    <td>
+                                        <div class="table-data-feature">
+                                         
+                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Send" >
+                                                <i class="zmdi zmdi-mail-send"></i>
+                                            </button>
+                                      
+                                        
+                                        </div>
+                                    </td>
+                                </tr>
+                                <%})%>
                                 <%} else {%>
                                 <tr>
                                     <td colspan="5">게시물이 없습니다.</td>
@@ -288,6 +347,7 @@
                     </div>
                 </div>
             </div>
+        
         </div>
     </div>
     </section>

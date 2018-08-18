@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var payment = require('../Models/payment');
+var normalPayment = require('../Models/payment');
 var group = require('../Models/group');
 var async = require('async');
 
@@ -76,7 +77,10 @@ module.exports = {
                     if(err){
                         console.log(err);
                     }else{
-                        res.render('admin',{pay:findedpay,group:findedgroup});
+                        normalPayment.find({isGroup:"off"}).exec(function(err,newNormalPayment){
+                            console.log(newNormalPayment);
+                            res.render('admin',{pay:findedpay,group:findedgroup,normal:newNormalPayment});
+                        });
                     }   
                 });
             }
