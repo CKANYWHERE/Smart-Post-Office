@@ -33,13 +33,16 @@ module.exports = {
         console.log(req.body);
         
         if(req.body.option == "on"){
-            group.findOne({name:req.body.address}).exec(function(err,findedgroup){
+            group.findOne({address:req.body.address}).exec(function(err,findedgroup){
                 if(err){
                     console.log(err); 
                 }
+                console.log('finded group:'+findedgroup);
+                
                 if(findedgroup == null){
                     var newGroup = new group({
-                        name : req.body.address,
+                        address : req.body.address,
+                        detail : req.body.detailadress,
                         ref : newPayment._id
                     });
                     newGroup.save(function(err,data){
@@ -51,7 +54,10 @@ module.exports = {
                     });
                 }
                 else{
-                    group.update({$push:{ref:newPayment._id}},function(data){
+                    findedgroup.update({$push:{ref:newPayment._id}},function(data){
+                        console.log(data);  
+                    });
+                    findedgroup.update({$push:{detail:req.body.detailadress}},function(data){
                         console.log(data);  
                     });
                 }
@@ -61,6 +67,29 @@ module.exports = {
    },
 
    GetAdminPage : function(req,res){
-        res.render('admin',{res:"asdf"});
+       group.find({}).sort({}).exec(function(err,findedgroup){
+            if(err){
+                console.log(err);
+            }
+            else{
+                payment.find({}).sort({}).exec(function(err,findedpay){
+                    if(err){
+                        console.log(err);
+                    }else{
+                        res.render('admin',{pay:findedpay,group:findedgroup});
+                    }   
+                });
+            }
+       });
+   },
+
+   GetData : function(req,res){
+        payment.find({isGroup:"on"}).exec(function(err,ondata){
+            payment.find({isGroup:"off"}).exec(function(err,offdata){
+                console.log({tied:ondata.length,normal:offdata.length});
+                  res.json({tied:ondata.length,normal:offdata.length});
+            });
+        });
+        
    }
 };

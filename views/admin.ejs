@@ -10,7 +10,7 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Dashboard 3</title>
+    <title>Admin</title>
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
@@ -72,15 +72,15 @@
                         <div class="col-md-12">
                             <div class="au-breadcrumb-content">
                                 <div class="au-breadcrumb-left">
-                                    <span class="au-breadcrumb-span">You are here:</span>
+                                    <span class="au-breadcrumb-span"></span>
                                     <ul class="list-unstyled list-inline au-breadcrumb__list">
                                         <li class="list-inline-item active">
-                                            <a href="#">Home</a>
+                                            <a href="#"></a>
                                         </li>
                                         <li class="list-inline-item seprate">
-                                            <span>/</span>
+                                            <span></span>
                                         </li>
-                                        <li class="list-inline-item">Dashboard</li>
+                                        <li class="list-inline-item">대시보드</li>
                                     </ul>
                                 </div>
                                 <form class="au-form-icon--sm" action="" method="post">
@@ -101,8 +101,8 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1 class="title-4"><%=res%>
-                                <span>John!</span>
+                            <h1 class="title-4">환영합니다
+                                <span>관리자님!</span>
                             </h1>
                             <hr class="line-seprate">
                         </div>
@@ -111,212 +111,41 @@
             </section>
             <!-- END WELCOME-->
 
- <!-- DATA TABLE-->
- <section class="p-t-20">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h3 class="title-5 m-b-35">묶음 배송 정보</h3>
-                    <div class="table-responsive table-responsive-data2">
-                        <table class="table table-data2">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        <label class="au-checkbox">
-                                            <input type="checkbox">
-                                            <span class="au-checkmark"></span>
-                                        </label>
-                                    </th>
-                                    <th>name</th>
-                                    <th>email</th>
-                                    <th>description</th>
-                                    <th>date</th>
-                                    <th>status</th>
-                                    <th>price</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="tr-shadow">
-                                    <td>
-                                        <label class="au-checkbox">
-                                            <input type="checkbox">
-                                            <span class="au-checkmark"></span>
-                                        </label>
-                                    </td>
-                                    <td>Lori Lynch</td>
-                                    <td>
-                                        <span class="block-email">lori@example.com</span>
-                                    </td>
-                                    <td class="desc">Samsung S8 Black</td>
-                                    <td>2018-09-27 02:12</td>
-                                    <td>
-                                        <span class="status--process">Processed</span>
-                                    </td>
-                                    <td>$679.00</td>
-                                    <td>
-                                        <div class="table-data-feature">
-                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
-                                                <i class="zmdi zmdi-mail-send"></i>
-                                            </button>
-                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                <i class="zmdi zmdi-edit"></i>
-                                            </button>
-                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                <i class="zmdi zmdi-delete"></i>
-                                            </button>
-                                            <button class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                                <i class="zmdi zmdi-more"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="spacer"></tr>
-                                <tr class="tr-shadow">
-                                    <td>
-                                        <label class="au-checkbox">
-                                            <input type="checkbox">
-                                            <span class="au-checkmark"></span>
-                                        </label>
-                                    </td>
-                                    <td>Lori Lynch</td>
-                                    <td>
-                                        <span class="block-email">john@example.com</span>
-                                    </td>
-                                    <td class="desc">iPhone X 64Gb Grey</td>
-                                    <td>2018-09-29 05:57</td>
-                                    <td>
-                                        <span class="status--process">Processed</span>
-                                    </td>
-                                    <td>$999.00</td>
-                                    <td>
-                                        <div class="table-data-feature">
-                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
-                                                <i class="zmdi zmdi-mail-send"></i>
-                                            </button>
-                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                <i class="zmdi zmdi-edit"></i>
-                                            </button>
-                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                <i class="zmdi zmdi-delete"></i>
-                                            </button>
-                                            <button class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                                <i class="zmdi zmdi-more"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="spacer"></tr>
-                                <tr class="tr-shadow">
-                                    <td>
-                                        <label class="au-checkbox">
-                                            <input type="checkbox">
-                                            <span class="au-checkmark"></span>
-                                        </label>
-                                    </td>
-                                    <td>Lori Lynch</td>
-                                    <td>
-                                        <span class="block-email">lyn@example.com</span>
-                                    </td>
-                                    <td class="desc">iPhone X 256Gb Black</td>
-                                    <td>2018-09-25 19:03</td>
-                                    <td>
-                                        <span class="status--denied">Denied</span>
-                                    </td>
-                                    <td>$1199.00</td>
-                                    <td>
-                                        <div class="table-data-feature">
-                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
-                                                <i class="zmdi zmdi-mail-send"></i>
-                                            </button>
-                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                <i class="zmdi zmdi-edit"></i>
-                                            </button>
-                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                <i class="zmdi zmdi-delete"></i>
-                                            </button>
-                                            <button class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                                <i class="zmdi zmdi-more"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="spacer"></tr>
-                                <tr class="tr-shadow">
-                                    <td>
-                                        <label class="au-checkbox">
-                                            <input type="checkbox">
-                                            <span class="au-checkmark"></span>
-                                        </label>
-                                    </td>
-                                    <td>Lori Lynch</td>
-                                    <td>
-                                        <span class="block-email">doe@example.com</span>
-                                    </td>
-                                    <td class="desc">Camera C430W 4k</td>
-                                    <td>2018-09-24 19:10</td>
-                                    <td>
-                                        <span class="status--process">Processed</span>
-                                    </td>
-                                    <td>$699.00</td>
-                                    <td>
-                                        <div class="table-data-feature">
-                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
-                                                <i class="zmdi zmdi-mail-send"></i>
-                                            </button>
-                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                <i class="zmdi zmdi-edit"></i>
-                                            </button>
-                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                <i class="zmdi zmdi-delete"></i>
-                                            </button>
-                                            <button class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                                <i class="zmdi zmdi-more"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- END DATA TABLE-->
-
+            <input type="hidden" id = "tied" name = "tied" value = "0">
+            <input type="hidden" id = "normal" name = "normal" value="0">
+            
             <!-- STATISTIC CHART-->
             <section class="statistic-chart">
                 <div class="container">
                         <div class="row">
                                 <div class="col-md-12">
-                                        <h3 class="title-5 m-b-35">차트</h3>
+                                        <h2 class="title-1 m-b-25">차트</h2>
                                     </div>
                                 <div class="col-mg-6 col-md-6">
                                     <div class="au-card recent-report">
                                         <div class="au-card-inner">
-                                            <h3 class="title-2">recent reports</h3>
+                                            <h3 class="title-2">배송 현황</h3>
                                             <div class="chart-info">
                                                 <div class="chart-info__left">
                                                     <div class="chart-note">
                                                         <span class="dot dot--blue"></span>
-                                                        <span>products</span>
+                                                        <span>일반배송</span>
                                                     </div>
                                                     <div class="chart-note mr-0">
                                                         <span class="dot dot--green"></span>
-                                                        <span>services</span>
+                                                        <span>묶음배송</span>
                                                     </div>
                                                 </div>
                                                 <div class="chart-info__right">
                                                     <div class="chart-statis">
                                                         <span class="index incre">
                                                             <i class="zmdi zmdi-long-arrow-up"></i>25%</span>
-                                                        <span class="label">products</span>
+                                                        <span class="label">묶음배송</span>
                                                     </div>
                                                     <div class="chart-statis mr-0">
                                                         <span class="index decre">
                                                             <i class="zmdi zmdi-long-arrow-down"></i>10%</span>
-                                                        <span class="label">services</span>
+                                                        <span class="label">일반배송</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -329,22 +158,22 @@
                                 <div class="col-mg-6 col-md-6">
                                     <div class="au-card chart-percent-card">
                                         <div class="au-card-inner">
-                                            <h3 class="title-2 tm-b-5">char by %</h3>
+                                            <h3 class="title-2 tm-b-5"></h3>
                                             <div class="row no-gutters">
                                                 <div class="col-xl-6">
                                                     <div class="chart-note-wrap">
                                                         <div class="chart-note mr-0 d-block">
                                                             <span class="dot dot--blue"></span>
-                                                            <span>products</span>
+                                                            <span>일반배송</span>
                                                         </div>
                                                         <div class="chart-note mr-0 d-block">
                                                             <span class="dot dot--red"></span>
-                                                            <span>services</span>
+                                                            <span>묶음배송</span>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-6">
-                                                    <div class="percent-chart">
+                                                    <div class="chart-note-wrap">
                                                         <canvas id="percent-chart"></canvas>
                                                     </div>
                                                 </div>
@@ -358,24 +187,131 @@
             </section>
             <!-- END STATISTIC CHART-->
 
-           
-
-            <!-- COPYRIGHT-->
-            <section class="p-t-60 p-b-20">
-                <div class="container">
-                    <div class="row">
+ <!-- DATA TABLE-->
+ <section class="p-t-20">
+        <div class="container">
+                <div class="row">
                         <div class="col-md-12">
-                            <div class="copyright">
-                                <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
+                            <h2 class="title-1 m-b-25">결제 정보</h2>
+                            <div class="table-responsive table--no-card m-b-40">
+                                <table class="table table-borderless table-striped table-earning">
+                                    <thead>
+                                        <tr>
+                                            <th>결제번호</th>
+                                            <th>주문 날짜</th>
+                                            <th>휴대폰 번호</th>
+                                            <th class="text-right">가격</th>
+                                            <th>목적지</th>
+                                            <th>상세 목적지</th>
+                                        </tr>
+                                    </thead>
+                                    <%if(pay.length>0){%>
+                                        <%var j = 0;%>
+                                        <%pay.forEach(function(item){%>
+                                        <%j++;%>
+                                    <tbody>
+                                        <tr>   
+                                            <td><%=j%></td>
+                                            <td><%=item.syncTime%></td>
+                                            <td><%=item.phone%></td>
+                                            <td class="text-right"><%=item.payment%></td>
+                                            <td><%=item.address%></td>
+                                            <td><%=item.detailadress%></td>
+                                        </tr>
+                                        <%})%>
+                                        <%} else {%>
+                                        <tr>
+                                            <td colspan="5">게시물이 없습니다.</td>
+                                        </tr>
+                                        <%}%>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
+            <div class="row">
+                <div class="col-md-12">
+                        <h2 class="title-1 m-b-25">묶음 배송 정보</h2>
+                    <div class="table-responsive table-responsive-data2">
+                        <table class="table table-data2">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <label class="au-checkbox">
+                                            <input type="checkbox">
+                                            <span class="au-checkmark"></span>
+                                        </label>
+                                    </th>
+                                    <th>배송번호</th>
+                                    <th>주소</th>          
+                                    <th>날짜</th>
+                                    <th>묶음 개수</th>
+                                </tr>
+                            </thead>
+                            <%if(group.length>0){%>
+                                <%var i = 0;%>
+                                <%group.forEach(function(item){%>
+                                <%i++;%>
+                            <tbody>
+                                <tr class="tr-shadow">
+                                    <td>
+                                        <label class="au-checkbox">
+                                            <input type="checkbox">
+                                            <span class="au-checkmark"></span>
+                                        </label>
+                                    </td>
+                                    <td><%=i%></td>
+                                    <td><%=item.address%></td>
+                                    <td><%=item.syncTime%></td>
+                                    <td><%=item.ref.length%></td>
+                                    <td>
+                                        <div class="table-data-feature">
+                                         
+                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Send" >
+                                                <i class="zmdi zmdi-mail-send"></i>
+                                            </button>
+                                      
+                                         
+                                            <button class="item" data-toggle="modal" data-placement="top" title="More" data-target="#myModal">
+                                                <i class="zmdi zmdi-more"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <%})%>
+                                <%} else {%>
+                                <tr>
+                                    <td colspan="5">게시물이 없습니다.</td>
+                                </tr>
+                        <%}%>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-            </section>
-            <!-- END COPYRIGHT-->
+            </div>
+        </div>
+    </div>
+    </section>
+    <!-- END DATA TABLE-->
+
+        
         </div>
 
     </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">상세 보기</h4>
+            </div>
+            <div class="modal-body">
+                001호
+                002호
+            </div>
+          </div>
+        </div>
+      </div>
 
     <!-- Jquery JS-->
     <script src="vendor/jquery-3.2.1.min.js"></script>

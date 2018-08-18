@@ -32,7 +32,11 @@
 
     <!-- Main CSS-->
     <link href="css/theme.css" rel="stylesheet" media="all">
-
+    <script>
+        $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').focus()
+        });
+    </script>
 </head>
 
 <body class="animsition">

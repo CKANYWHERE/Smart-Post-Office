@@ -5,5 +5,6 @@ var app = express();
 module.exports = function () {
     app.post('/postpayment', ShoppingController.PostPayment);
     app.get('/getadminpage',ShoppingController.GetAdminPage);
+    app.post('/getdata',ShoppingController.GetData);
     return app;
 };

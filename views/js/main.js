@@ -69,7 +69,6 @@
       });
     }
 
-
     //WidgetChart 2
     var ctx = document.getElementById("widgetChart2");
     if (ctx) {
@@ -333,15 +332,18 @@
 
     // Percent Chart
     var ctx = document.getElementById("percent-chart");
+    
     if (ctx) {
+      var tied = 4;
+      var normal = 1;
       ctx.height = 280;
-      var myChart = new Chart(ctx, {
+      var newoption = {
         type: 'doughnut',
         data: {
           datasets: [
             {
               label: "My First dataset",
-              data: [60, 40],
+              data: [normal, tied],
               backgroundColor: [
                 '#00b5e9',
                 '#fa4251'
@@ -360,8 +362,8 @@
             }
           ],
           labels: [
-            'Products',
-            'Services'
+            '일반배송',
+            '묶음배송'
           ]
         },
         options: {
@@ -383,7 +385,25 @@
             bodyFontSize: 16
           }
         }
+      };
+
+      $.ajax({
+        type:"POST",
+        url:"http://localhost:3000/getdata",
+        data : {get:"data"},
+        dataType:"json",
+        success :function(json){
+          tied = json['tied'];
+          normal = json['normal'];
+          newoption.data.datasets[0].data.push(normal);
+          newoption.data.datasets[0].data.push(tied);
+        },
+
+        error : function(xhr, status, error){
+          console.log("error");
+        }
       });
+      var myChart = new Chart(ctx,newoption);
     }
 
   } catch (error) {
