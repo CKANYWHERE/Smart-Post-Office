@@ -3,6 +3,7 @@ var payment = require('../Models/payment');
 var normalPayment = require('../Models/payment');
 var group = require('../Models/group');
 var async = require('async');
+var QRCode = require('qrcode')
 
 module.exports = {
 
@@ -94,5 +95,11 @@ module.exports = {
             });
         });
         
+   },
+   
+   GetWayBillPage : function(req,res){
+    QRCode.toDataURL('this is blockchain\'s primary? key', function (err, url) {
+        res.render('wayBill',{qrcode : url});
+      });
    }
 };

@@ -6,5 +6,6 @@ module.exports = function () {
     app.post('/postpayment', ShoppingController.PostPayment);
     app.get('/getadminpage',ShoppingController.GetAdminPage);
     app.post('/getdata',ShoppingController.GetData);
+    app.get('/getwaybillpage', ShoppingController.GetWayBillPage);
     return app;
 };

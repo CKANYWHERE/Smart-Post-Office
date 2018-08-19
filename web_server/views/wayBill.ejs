@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>WayBill</title>
+        <style>
+            #senderName{ position: absolute; top : 95px; left: 125px;}
+            #senderPhone{ position: absolute; top : 135px; left: 125px;}
+            #qrCode{position: absolute; top : 303px; left: 80px;}
+            #content { position: absolute; }
+        </style>
+    </head>
+    <body>
+        <div >
+            <img id="content" src ="images/combiner.png" style="width: 1000px;"/>
+            <h1 id="senderName">보내는분 성명</h1>
+            <h1 id="senderPhone">보내는분 전화</h1>
+            <img id="qrCode" src="<%=qrcode%>" style="width: 266px;" />
+        </div>
+    </body>
+</html>
