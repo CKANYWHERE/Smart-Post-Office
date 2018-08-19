@@ -31,7 +31,6 @@ module.exports = {
                 console.log('saved');
             }
         });
-        console.log(req.body);
         
         if(req.body.option == "on"){
             group.findOne({address:req.body.address}).exec(function(err,findedgroup){
