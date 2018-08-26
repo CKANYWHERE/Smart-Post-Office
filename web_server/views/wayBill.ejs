@@ -26,32 +26,36 @@
     <div style="position: absolute; width:1000px;">
         <div>
             <img id="content" src ="/images/combiner.png"/>
-            <h1 id="senderName" class="sender">보내는분 성명</h1>
-            <h1 id="senderPhone" class="sender">010-1010-1010</h1>
-            <h2 id="senderAddress">인천광역시 남구 용현동 77-15 밀레니엄캐슬 401호</h2>
+            <h1 id="senderName" class="sender">민창경</h1>
+            <h1 id="senderPhone" class="sender">010-3557-7940</h1>
+            <h2 id="senderAddress">서울특별시 강남구 민창경집</h2>
             <h2 id="senderPostcode" class="sender">12345</h2>
-            <h1 id="recipientName" class="sender">받는분 성명</h1>
-            <h1 id="recipientPhone" class="sender">010-0101-0101</h1>
-            <h1 id="recipientAddress">ㅁㄴㅇㄹ ㅁㄴㅇㄹ ㅁ ㄴ ㅇ ㄹ 인 천 광역시 남구 용현동 77-15</h1>
+            <h1 id="recipientName" class="sender"><%=payment[0].name%></h1>
+            <h1 id="recipientPhone" class="sender"><%=payment[0].phone%></h1>
+            <h1 id="recipientAddress"><%=payment[0].address%></h1>
             <h1 id="recipientPostcode" class="sender">54325</h1>
             <h2 id="contents">돼지고기, 소고기, 닭고기, 염소고기, 말고기, 당나귀고기, 타조고기</h2>
-            <h1 id="theNumberOfHouseholds" class="sender">3</h1>
-            <img id="qrCode" src="<%=qrcode%>" style="width: 266px;" />
+            <h1 id="theNumberOfHouseholds" class="sender"><%=payment.length%></h1>
+            <img id="qrCode" src="<%=group.qrcode%>" style="width: 266px;" />
         </div>
-        <%for(var i = 0; i<5; i++){ %>
+        <%if(payment.length>0){%>
+        <%var i=0;%>
+        <%payment.forEach(function(item){ %>
         <div>
             <img id="content" src ="/images/combinee.png" style="top: <%=600+i*330%>px;"/>
-            <h1 class="sender" style="top: <%=695+i*330%>px; left: 125px;">보내는분 성명</h1>
-            <h1 class="sender" style="top: <%=735+i*330%>px; left: 125px;">010-1010-1010</h1>
-            <h2 style="top: <%=780+i*330%>px; left: 110px; width: 360px; line-height:120%; word-break:keep-all; position: absolute;">인천광역시 남구 용현동 77-15 밀레니엄캐슬 401호</h2>
+            <h1 class="sender" style="top: <%=695+i*330%>px; left: 125px;">민창경</h1>
+            <h1 class="sender" style="top: <%=735+i*330%>px; left: 125px;">010-3557-7940</h1>
+            <h2 style="top: <%=780+i*330%>px; left: 110px; width: 360px; line-height:120%; word-break:keep-all; position: absolute;">서울특별시 강남구 민창경집</h2>
             <h2 class="sender" style="top: <%=832+i*330%>px; left: 350px; letter-spacing: 12px;">12345</h2>
-            <h1 class="sender" style="top: <%=745+i*330%>px; left: 575px;">받는분 성명</h1>
-            <h1 class="sender" style="top: <%=789+i*330%>px; left: 575px;">010-1010-1010</h1>
-            <h2 class="sender" style="top: <%=835+i*330%>px; left: 575px;">받는분 주소 00<%=i+1%>호</h2>
+            <h1 class="sender" style="top: <%=745+i*330%>px; left: 575px;"><%=item.name%></h1>
+            <h1 class="sender" style="top: <%=789+i*330%>px; left: 575px;"><%=item.phone%></h1>
+            <h2 class="sender" style="top: <%=835+i*330%>px; left: 575px;"><%=item.detailaddress%></h2>
             <h2 class="sender" style="top: <%=700+i*330%>px; left: 610px;">54325</h2>
-            <img id="qrCode" src="<%=qrcode%>" style="top: <%=765+i*330%>px; left: 847px; width: 121px;" />
+            <img id="qrCode" src="<%=item.qrcode%>" style="top: <%=765+i*330%>px; left: 847px; width: 121px;" />
         </div>
-        <%}%>
+        <%i++;%>
+        <%});%>
+    <%}%>
     </div>
     </body>
 </html>
