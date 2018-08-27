@@ -37,7 +37,7 @@ module.exports = {
                         id:data.id,
                         point:data.point,
                         address:data.address,
-                        phone:data.phone},
+                        phone:data.phone}
                     );
                 }
             });

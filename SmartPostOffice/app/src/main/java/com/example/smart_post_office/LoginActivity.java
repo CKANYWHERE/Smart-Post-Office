@@ -39,6 +39,7 @@ public class LoginActivity extends AppCompatActivity{
     private String userPhone;
     private String userName;
     private String test;
+    private String userOid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,7 +91,6 @@ public class LoginActivity extends AppCompatActivity{
                     userPoint = response.getInt("point");
                     userAddress = response.getString("address");
                     userPhone = response.getString("phone");
-
                 } catch (JSONException e) {
                     Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_LONG).show();
                 } finally {
@@ -104,6 +104,7 @@ public class LoginActivity extends AppCompatActivity{
                     editor.putInt("userPoint",userPoint);
                     editor.putString("userAddress",userAddress);
                     editor.putString("userPhone",userPhone);
+
                     editor.commit();
 
                     setResult(RESULT_OK);//////////////////////////////////////////////////////
