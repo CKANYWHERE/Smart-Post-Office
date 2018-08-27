@@ -10,7 +10,7 @@ module.exports = {
             id : "test",
             password : "test",
             name:"김철수",
-            point:100,
+            point:0,
             address:"서울 특별시 종로구"
         });
         newUser.save(function(err,data){
@@ -37,7 +37,8 @@ module.exports = {
                         id:data.id,
                         point:data.point,
                         address:data.address,
-                        phone:data.phone},
+                        phone:data.phone,
+                        _id:data._id},
                     );
                 }
             });

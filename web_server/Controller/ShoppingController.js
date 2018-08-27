@@ -165,7 +165,8 @@ module.exports = {
                                                 groupResult.qrcode = url;
                                                 var sendToWebPay = [];
                                                 async.each(paymentResult,function(item,callback) {
-                                                    QRCode.toDataURL(item.oid, function (err, url) {
+                                                    var qrcodeMessage = JSON.stringify({"groupoid":groupResult.oid,"useroid":item.oid,"phone":item.phone});
+                                                    QRCode.toDataURL(qrcodeMessage, function (err, url) {
                                                         if (err) {
                                                             console.log(err);
                                                             callback(err);
