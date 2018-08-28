@@ -29,16 +29,17 @@ public class LoginActivity extends AppCompatActivity{
     private EditText txtId;
     private EditText txtPassword;
     private Button btnLogin;
+    private Button btnSignUp;
     private NetWorkUtil netWorkUtil;
     private SharedPreferences settings;
     SharedPreferences.Editor editor;
     private boolean serverAuth;
     private String userId;
+
     private int userPoint;
     private String userAddress;
     private String userPhone;
     private String userName;
-    private String test;
     private String userOid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +50,7 @@ public class LoginActivity extends AppCompatActivity{
         txtId = findViewById(R.id.etId);
         txtPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnSignin);
+        btnSignUp = findViewById(R.id.btnSignUp);
 
         //세션 추가
         settings = getSharedPreferences("user",MODE_PRIVATE);
@@ -64,6 +66,15 @@ public class LoginActivity extends AppCompatActivity{
                 requestPostLogin();
             }
         });
+        btnSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),
+                        SignupActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     private void requestPostLogin() {
@@ -91,6 +102,7 @@ public class LoginActivity extends AppCompatActivity{
                     userPoint = response.getInt("point");
                     userAddress = response.getString("address");
                     userPhone = response.getString("phone");
+                    userOid = response.getString("_id");
                 } catch (JSONException e) {
                     Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_LONG).show();
                 } finally {
@@ -98,25 +110,22 @@ public class LoginActivity extends AppCompatActivity{
                 }
 
                 if(serverAuth){
-
                     editor.putString("userId", userId);
                     editor.putString("userName", userName);
                     editor.putInt("userPoint",userPoint);
                     editor.putString("userAddress",userAddress);
                     editor.putString("userPhone",userPhone);
-
+                    editor.putString("userOid",userOid);
                     editor.commit();
 
-                    setResult(RESULT_OK);//////////////////////////////////////////////////////
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                    startActivity(intent);
-                    finish(); //LOGIN VIEW 종료
                 }
 
             }
         };
     }
+
+
+
 
     private Response.ErrorListener networkErrorListener() {
         return new Response.ErrorListener() {

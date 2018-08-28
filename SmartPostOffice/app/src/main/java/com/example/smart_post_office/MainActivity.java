@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView txtAddress;
     private TextView txtPoint;
     private NetWorkUtil netWorkUtil;
+    private String userOid;
+    private int userPoint;
 
     //qr code scanner object
     private IntentIntegrator qrScan;
@@ -67,16 +69,36 @@ public class MainActivity extends AppCompatActivity {
             btnLogIn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    editor.clear();
-                    editor.commit();
+                    editor.remove("userPoint");
+                    editor.remove("userPhone");
+                    editor.remove("userId");
+                    editor.remove("userAddress");
+                    editor.remove("userOid");
+                    editor.remove("userName");
+                    editor.apply();
+                    Log.e("delete","d");
                 }
             });
+
+            String userPoint = Integer.toString(getUser.getInt("userPoint",0));
             txtUser.setText(getUser.getString("userName","")+"님 환영합니다.");
             txtPhone.setText(getUser.getString("userPhone",""));
             txtEmail.setText(getUser.getString("userId",""));
             txtAddress.setText(getUser.getString("userAddress",""));
-            txtPoint.setText(getUser.getString("userPhone",""));
-
+            txtPoint.setText(userPoint);
+            Intent intent = new Intent(getApplicationContext(),
+                    LoginActivity.class);
+            startActivity(intent);
+        }else{
+            //로그인 눌렀을때
+            btnLogIn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(),
+                            LoginActivity.class);
+                    startActivity(intent);
+                }
+            });
         }
 
         //intializing scan object
@@ -92,15 +114,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //로그인 눌렀을때
-        btnLogIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),
-                        LoginActivity.class);
-                startActivity(intent);
-            }
-        });
+
 
 
     }
@@ -126,8 +140,9 @@ public class MainActivity extends AppCompatActivity {
                     groupOid = obj.getString("groupoid");
                     deliveryOid = obj.getString("useroid");
                     reciverOid = obj.getString("phone");
+
                     Toast.makeText(MainActivity.this, "블록체인 안으로 들어감", Toast.LENGTH_SHORT).show();
-                    postSendToChain(groupOid,deliveryOid,reciverOid);
+                    postSendToChain(groupOid,deliveryOid);
                 } catch (JSONException e) {
                     e.printStackTrace();
                     //Toast.makeText(MainActivity.this, result.getContents(), Toast.LENGTH_LONG).show();
@@ -140,12 +155,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void postSendToChain(String groupOid, String deliveryOid, String reciverOid) {
+
+    private void postSendToChain(String groupOid, String deliveryOid) {
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("group",groupOid);
             jsonObject.put("delivery",deliveryOid);
-            jsonObject.put("reciver",reciverOid);
+            userOid = getUser.getString("userOid","");
+            Log.e("useroid",userOid);
+            jsonObject.put("reciver",userOid);
             netWorkUtil.requestServer(Request.Method.POST,Config.POST_CHAIN,jsonObject,networkSuccessListener(),networkErrorListener());
         } catch (JSONException e) {
             e.printStackTrace();
@@ -155,11 +173,49 @@ public class MainActivity extends AppCompatActivity {
     private Response.Listener<JSONObject> networkSuccessListener() {
         return new Response.Listener<JSONObject>() {
             public void onResponse(JSONObject response) {
+                JSONObject object = new JSONObject();
+                try {
+                    object.put("useroid",userOid);
+                    netWorkUtil.requestServer(Config.GET_CHAIN+userOid,object,networkGetSuccessListener(),networkGetErrorListener());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
                 Log.e("success","success");
             }
         };
+
     }
     private Response.ErrorListener networkErrorListener() {
+        return new Response.ErrorListener() {
+
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        };
+    }
+
+    private Response.Listener<JSONObject> networkGetSuccessListener() {
+        return new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    userPoint = response.getInt("point");
+                    Log.e("point",Integer.toString(userPoint));
+                    editor.putInt("userPoint",userPoint).apply();
+
+                    setResult(RESULT_OK);//////////////////////////////////////////////////////
+                    Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    startActivity(intent);
+                    finish(); //LOGIN VIEW 종료
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+    }
+    private Response.ErrorListener networkGetErrorListener() {
         return new Response.ErrorListener() {
 
             public void onErrorResponse(VolleyError error) {

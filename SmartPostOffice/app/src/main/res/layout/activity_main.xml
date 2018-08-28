@@ -32,13 +32,13 @@
             android:text="로그인" />
 
         <TextView
-        android:id="@+id/txtUser"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="민창경님 안녕하세요"
-        android:textSize="25sp"
-        android:textStyle="bold"
-            android:layout_gravity="left"/>
+            android:id="@+id/txtUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:text="__님 안녕하세요"
+            android:textSize="25sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <Space
@@ -68,10 +68,9 @@
                 android:id="@+id/txtPhone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="right"
                 android:layout_weight="1"
-                android:text="01035577940"
-                android:textSize="15sp"
-                android:layout_gravity="right"/>
+                android:textSize="15sp" />
 
         </LinearLayout>
 
@@ -97,7 +96,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="janu723@naver.com"
                 android:textSize="15sp" />
         </LinearLayout>
 
@@ -123,7 +121,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="경상북도 포항시"
                 android:textSize="15sp" />
         </LinearLayout>
 
