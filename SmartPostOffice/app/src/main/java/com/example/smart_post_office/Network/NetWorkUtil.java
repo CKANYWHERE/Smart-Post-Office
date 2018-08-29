@@ -24,7 +24,6 @@ public class NetWorkUtil {
         jsonObjectRequest = new JsonObjectRequest(method, url, jsonRequest, listener, errorListener);
         requestQueue.add(jsonObjectRequest);
     }
-
     /*       GET        */
     public void requestServer(String url,JSONObject jsonRequest, Response.Listener<JSONObject> listener, Response.ErrorListener errorListener) {
         jsonObjectRequest = new JsonObjectRequest(url, jsonRequest, listener, errorListener);

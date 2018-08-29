@@ -22,6 +22,7 @@ import com.example.smart_post_office.util.Config;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -77,6 +78,9 @@ public class MainActivity extends AppCompatActivity {
                     editor.remove("userName");
                     editor.apply();
                     Log.e("delete","d");
+                    Intent intent = new Intent(getApplicationContext(),
+                            LoginActivity.class);
+                    startActivity(intent);
                 }
             });
 
@@ -86,9 +90,6 @@ public class MainActivity extends AppCompatActivity {
             txtEmail.setText(getUser.getString("userId",""));
             txtAddress.setText(getUser.getString("userAddress",""));
             txtPoint.setText(userPoint);
-            Intent intent = new Intent(getApplicationContext(),
-                    LoginActivity.class);
-            startActivity(intent);
         }else{
             //로그인 눌렀을때
             btnLogIn.setOnClickListener(new View.OnClickListener() {
@@ -113,11 +114,8 @@ public class MainActivity extends AppCompatActivity {
                 qrScan.initiateScan();
             }
         });
+        }
 
-
-
-
-    }
 
     private String groupOid, deliveryOid, reciverOid;
 
@@ -173,14 +171,7 @@ public class MainActivity extends AppCompatActivity {
     private Response.Listener<JSONObject> networkSuccessListener() {
         return new Response.Listener<JSONObject>() {
             public void onResponse(JSONObject response) {
-                JSONObject object = new JSONObject();
-                try {
-                    object.put("useroid",userOid);
-                    netWorkUtil.requestServer(Config.GET_CHAIN+userOid,object,networkGetSuccessListener(),networkGetErrorListener());
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
+                netWorkUtil.requestServer(Config.GET_CHAIN+userOid,networkGetSuccessListener(),networkGetErrorListener());
                 Log.e("success","success");
             }
         };
@@ -195,32 +186,67 @@ public class MainActivity extends AppCompatActivity {
         };
     }
 
-    private Response.Listener<JSONObject> networkGetSuccessListener() {
-        return new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                try {
-                    userPoint = response.getInt("point");
-                    Log.e("point",Integer.toString(userPoint));
-                    editor.putInt("userPoint",userPoint).apply();
+    private Response.Listener<JSONArray> networkGetSuccessListener() {
+        return new Response.Listener<JSONArray>() {
 
+            @Override
+            public void onResponse(JSONArray response) {
+                try {
+                    Log.e("responsearray",response.toString());
+                    JSONArray jsonArray = new JSONArray(response.toString());
+                    for(int i=0; i < jsonArray.length();i++){
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        userPoint = jsonObject.getInt("point");
+                        Log.e("point",Integer.toString(userPoint));
+                        editor.putInt("userPoint",userPoint).apply();
+                    }
                     setResult(RESULT_OK);//////////////////////////////////////////////////////
+
                     Intent intent = new Intent(MainActivity.this, MainActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     startActivity(intent);
-                    finish(); //LOGIN VIEW 종료
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
         };
     }
+
     private Response.ErrorListener networkGetErrorListener() {
         return new Response.ErrorListener() {
 
             public void onErrorResponse(VolleyError error) {
+                Log.e("ffffff","에러");
                 Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         };
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        btnLogIn.setText("로그아웃");
+        btnLogIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editor.remove("userPoint");
+                editor.remove("userPhone");
+                editor.remove("userId");
+                editor.remove("userAddress");
+                editor.remove("userOid");
+                editor.remove("userName");
+                editor.apply();
+                Log.e("delete","d");
+                Intent intent = new Intent(getApplicationContext(),
+                        LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        String userPoint = Integer.toString(getUser.getInt("userPoint",0));
+        txtUser.setText(getUser.getString("userName","")+"님 환영합니다.");
+        txtPhone.setText(getUser.getString("userPhone",""));
+        txtEmail.setText(getUser.getString("userId",""));
+        txtAddress.setText(getUser.getString("userAddress",""));
+        txtPoint.setText(userPoint);
     }
 }
