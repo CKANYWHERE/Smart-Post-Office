@@ -1,23 +1,48 @@
 var mongoose = require('mongoose');
 var user = require('../Models/user');
+var request = require('request');
 var db;
 
 module.exports = {
 
     SaveUser : function(req,res){
         var newUser = new user({
-            phone : "010-1111-1111",
-            id : "test",
-            password : "test",
-            name:"김철수",
+            phone :req.body.phone,
+            id : req.body.id,
+            password : req.body.password,
+            name:req.body.name,
             point:0,
-            address:"서울 특별시 종로구"
+            address:req.body.address
         });
         newUser.save(function(err,data){
             if(err){
                 console.log(err);
             }
             else{
+                var user={};
+                user.oid = data.id.toString();
+                user.phone = data.phone;
+                user.point = data.point;
+                user.name = data.name;
+                sendToBlockChainUser = JSON.stringify(user);
+
+                var headers = {
+                    'Content-Type': 'application/json ; charset=utf-8'
+                }
+
+                var options = {
+                    "url": 'http://localhost:3000/api/Reciver',
+                    "method": 'POST',
+                    "headers": headers,
+                    "body": sendToBlockChainUser
+                }
+                
+                request(options, function (error, res, body) {
+                    if (!error && res.statusCode == 200) {
+                        console.log("putted into block chain");
+                    }
+                });
+
                res.send(data);
             }
         });

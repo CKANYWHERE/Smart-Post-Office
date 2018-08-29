@@ -4,6 +4,6 @@ var app = express();
 
 module.exports = function(){
     app.post('/signin',UserController.PostLogin);
-    app.get('/createuser',UserController.SaveUser);
+    app.post('/createuser',UserController.SaveUser);
     return app;
 }
