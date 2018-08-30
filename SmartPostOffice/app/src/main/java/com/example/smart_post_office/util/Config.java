@@ -5,8 +5,9 @@ package com.example.smart_post_office.util;
  */
 
 public class Config {
-    public final static String MAIN_URL = "http://10.0.0.6:3030";
-    public final static String POST_CHAIN = "http://10.0.0.6:3000/api/TradeSuccess";
-    public final static String GET_CHAIN = "http://10.0.0.6:3000/api/queries/selectReciverByReciverOid?useroid=";
+    public final static String MAIN_URL = "http://192.168.1.116:3030";
+    public final static String POST_CHAIN = "http://192.168.1.116:3000/api/TradeSuccess";
+    public final static String GET_CHAIN = "http://192.168.1.116:3000/api/queries/selectReciverByReciverOid?useroid=";
     public final static String POST_SIGNIN = "/api/postoffice/signin";
+    public final static String POST_SIGNUP = "/api/postoffice/createuser";
 }

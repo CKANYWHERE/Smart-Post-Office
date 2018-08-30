@@ -76,8 +76,8 @@ public class MainActivity extends AppCompatActivity {
                     editor.remove("userAddress");
                     editor.remove("userOid");
                     editor.remove("userName");
-                    editor.apply();
-                    Log.e("delete","d");
+                    editor.commit();
+
                     Intent intent = new Intent(getApplicationContext(),
                             LoginActivity.class);
                     startActivity(intent);
@@ -160,7 +160,6 @@ public class MainActivity extends AppCompatActivity {
             jsonObject.put("group",groupOid);
             jsonObject.put("delivery",deliveryOid);
             userOid = getUser.getString("userOid","");
-            Log.e("useroid",userOid);
             jsonObject.put("reciver",userOid);
             netWorkUtil.requestServer(Request.Method.POST,Config.POST_CHAIN,jsonObject,networkSuccessListener(),networkErrorListener());
         } catch (JSONException e) {

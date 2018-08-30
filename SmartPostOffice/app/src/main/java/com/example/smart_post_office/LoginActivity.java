@@ -125,8 +125,6 @@ public class LoginActivity extends AppCompatActivity{
     }
 
 
-
-
     private Response.ErrorListener networkErrorListener() {
         return new Response.ErrorListener() {
 
