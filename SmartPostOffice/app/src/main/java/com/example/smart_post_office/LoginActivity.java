@@ -95,7 +95,7 @@ public class LoginActivity extends AppCompatActivity{
             public void onResponse(JSONObject response) {
 
                 try {
-                    Log.e("asdf",response.toString());
+                    
                     serverAuth = response.getBoolean("success");
                     userName = response.getString("name");
                     userId = response.getString("id");

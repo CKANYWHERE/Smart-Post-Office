@@ -1,7 +1,11 @@
 var mongoose = require('mongoose');
 var user = require('../Models/user');
 var request = require('request');
+<<<<<<< HEAD
 
+=======
+var db;
+>>>>>>> 6ec13f81b222d5ef2ca33ec37a7d8d8164a3ba48
 
 module.exports = {
 
@@ -20,7 +24,11 @@ module.exports = {
             }
             else{
                 var user={};
+<<<<<<< HEAD
                 user.oid = data._id.toString();
+=======
+                user.oid = data.id.toString();
+>>>>>>> 6ec13f81b222d5ef2ca33ec37a7d8d8164a3ba48
                 user.phone = data.phone;
                 user.point = data.point;
                 user.name = data.name;
