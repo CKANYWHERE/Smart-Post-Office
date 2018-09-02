@@ -19,6 +19,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.example.smart_post_office.Network.NetWorkUtil;
 import com.example.smart_post_office.util.Config;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -30,8 +32,10 @@ import static java.security.AccessController.getContext;
 
 public class MainActivity extends AppCompatActivity {
     //view Objects
-    private ImageButton buttonScan;
+    //private ImageButton buttonScan;
+
     private Button btnLogIn;
+    private ImageButton btnScan;
     private TextView txtUser;
     private TextView txtPhone;
     private TextView txtEmail;
@@ -56,7 +60,8 @@ public class MainActivity extends AppCompatActivity {
         editor = getUser.edit();
         Log.e("session",getUser.getAll().toString());
         //UI 구성
-        buttonScan = (ImageButton) findViewById(R.id.btnScan);
+        btnScan = (ImageButton) findViewById(R.id.btnScan);
+
         btnLogIn =(Button)findViewById(R.id.btnLogIn);
         txtUser =(TextView)findViewById(R.id.txtUser);
         txtPhone = (TextView)findViewById(R.id.txtPhone);
@@ -106,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
         qrScan = new IntentIntegrator(this);
 
         //qr 코드 눌렀을떄
-        buttonScan.setOnClickListener(new View.OnClickListener() {
+        btnScan.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //scan option
                 qrScan.setPrompt("Scanning...");
@@ -114,12 +119,12 @@ public class MainActivity extends AppCompatActivity {
                 qrScan.initiateScan();
             }
         });
-        }
+    }
 
 
     private String groupOid, deliveryOid, reciverOid;
 
-    //qr 코드 동작코드
+   // qr 코드 동작코드
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
@@ -130,17 +135,14 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 //qrcode 결과가 있으면
                 Toast.makeText(MainActivity.this, "스캔완료!", Toast.LENGTH_SHORT).show();
-                String qrcodeResult = result.getContents();
-                Toast.makeText(MainActivity.this, qrcodeResult.toString(), Toast.LENGTH_SHORT).show();
                 try {
                     //data를 json으로 변환
                     JSONObject obj = new JSONObject(result.getContents());
                     groupOid = obj.getString("groupoid");
                     deliveryOid = obj.getString("useroid");
                     reciverOid = obj.getString("phone");
-
-                    Toast.makeText(MainActivity.this, "블록체인 안으로 들어감", Toast.LENGTH_SHORT).show();
                     postSendToChain(groupOid,deliveryOid);
+                    Toast.makeText(MainActivity.this, "수취인이 다릅니다.", Toast.LENGTH_SHORT).show();
                 } catch (JSONException e) {
                     e.printStackTrace();
                     //Toast.makeText(MainActivity.this, result.getContents(), Toast.LENGTH_LONG).show();

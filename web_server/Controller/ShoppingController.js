@@ -123,7 +123,7 @@ module.exports = {
                                 data.name = callbackPayment.reciver,
                                 data.phone = callbackPayment.phone,
                                 data.address = callbackPayment.address,
-                                data.detailaddress = callbackPayment.detailadress,
+                                data.isArrived = false;
                                 data.isGroup = true,
                                 data.sender = "s001"
                             paymentResult.push(data);
@@ -141,7 +141,7 @@ module.exports = {
                         var group = JSON.stringify(groupResult);
 
                         var options = {
-                            "url": 'http://localhost:3000/api/Delivery',
+                            "url": 'http://192.168.1.116:3000/api/Delivery',
                             "method": 'POST',
                             "headers": headers,
                             "body": payment
@@ -151,7 +151,7 @@ module.exports = {
                             if (!error && res.statusCode == 200) {
 
                                 var options = {
-                                    url: 'http://localhost:3000/api/Group',
+                                    url: 'http://192.168.1.116:3000/api/Group',
                                     method: 'POST',
                                     headers: headers,
                                     body: group

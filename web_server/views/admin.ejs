@@ -48,7 +48,6 @@
                     </div>
                         <div class="account-wrap">
                             <div class="account-item account-item--style2 clearfix js-item-menu">
-                            
                                 <div class="content">
                                     <a class="js-acc-btn" href="#">admin</a>
                                 </div>
@@ -140,7 +139,7 @@
                                                     <div class="chart-statis">
                                                         <span class="index incre">
                                                             <i class="zmdi zmdi-long-arrow-up"></i>25%</span>
-                                                        <span class="label">묶음배송</span>
+                                                        <span class="label">편의점배송</span>
                                                     </div>
                                                     <div class="chart-statis mr-0">
                                                         <span class="index decre">
@@ -168,7 +167,7 @@
                                                         </div>
                                                         <div class="chart-note mr-0 d-block">
                                                             <span class="dot dot--red"></span>
-                                                            <span>묶음배송</span>
+                                                            <span>편의점배송</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -202,7 +201,7 @@
                                             <th>휴대폰 번호</th>
                                             <th class="text-right">가격</th>
                                             <th>목적지</th>
-                                            <th>상세 목적지</th>
+                                           
                                         </tr>
                                     </thead>
                                     <%if(pay.length>0){%>
@@ -216,7 +215,7 @@
                                             <td><%=item.phone%></td>
                                             <td class="text-right"><%=item.payment%></td>
                                             <td><%=item.address%></td>
-                                            <td><%=item.detailadress%></td>
+                                        
                                         </tr>
                                         <%})%>
                                         <%} else {%>
@@ -230,7 +229,7 @@
                         </div>
                 <div class="col">
                 <div class="col-mg-12 col-md-12">
-                        <h2 class="title-1 m-b-25">묶음 배송 정보</h2>
+                        <h2 class="title-1 m-b-25">편의점 배송 정보</h2>
                     <div class="table-responsive table-responsive-data2">
                         <table class="table table-data2">
                             <thead>
@@ -244,13 +243,13 @@
                                     <th>번호</th>
                                     <th>주소</th>          
                                     <th>날짜</th>
-                                    <th>개수</th>
+                                    
                                 </tr>
                             </thead>
                             <%if(group.length>0){%>
                                 <%var i = 0;%>
                                 <%group.forEach(function(item){%>
-                                <%i++;%>
+                               
                             <tbody>
                                 <tr class="tr-shadow">
                                     <td>
@@ -273,6 +272,7 @@
                                       
                                          
                                             <button class="item" data-toggle="modal" data-placement="top" title="More" data-target="#myModal">
+                                                    <a data-toggle="modal" href="#myModal"></a>
                                                 <i class="zmdi zmdi-more"></i>
                                             </button>
                                         </div>
@@ -306,7 +306,6 @@
                                     </th>
                                     <th>번호</th>
                                     <th>주소</th>          
-                                    <th>상세주소</th>
                                     <th>날짜</th>
                                 </tr>
                             </thead>
@@ -324,7 +323,6 @@
                                     </td>
                                     <td><%=i%></td>
                                     <td><%=item.address%></td>
-                                    <td><%=item.detailadress%></td>
                                     <td><%=item.syncTime%></td>
                                     <td>
                                         <div class="table-data-feature">

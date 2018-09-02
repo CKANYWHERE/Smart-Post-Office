@@ -5,7 +5,7 @@ var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
 var url            = require('./Config/url');
 var logger         = require('morgan');
-var port = process.env.PORT || 3030; // set PORT
+var port = process.env.PORT || 3333; // set PORT
 mongoose.Promise = global.Promise;
 mongoose.connect(url.dburl,{ useNewUrlParser: true });
 

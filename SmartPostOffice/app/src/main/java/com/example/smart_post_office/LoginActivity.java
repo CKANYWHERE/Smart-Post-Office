@@ -70,7 +70,7 @@ public class LoginActivity extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),
-                        SignupActivity.class);
+                        PushActivity.class);
                 startActivity(intent);
             }
         });
@@ -93,9 +93,7 @@ public class LoginActivity extends AppCompatActivity{
     private Response.Listener<JSONObject> networkSuccessListener() {
         return new Response.Listener<JSONObject>() {
             public void onResponse(JSONObject response) {
-
                 try {
-                    
                     serverAuth = response.getBoolean("success");
                     userName = response.getString("name");
                     userId = response.getString("id");
@@ -117,13 +115,10 @@ public class LoginActivity extends AppCompatActivity{
                     editor.putString("userPhone",userPhone);
                     editor.putString("userOid",userOid);
                     editor.commit();
-
                 }
-
             }
         };
     }
-
 
     private Response.ErrorListener networkErrorListener() {
         return new Response.ErrorListener() {
@@ -133,7 +128,5 @@ public class LoginActivity extends AppCompatActivity{
             }
         };
     }
-
-
 
 }

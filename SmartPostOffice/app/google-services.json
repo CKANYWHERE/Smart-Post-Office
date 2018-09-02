@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "747400609565",
+    "firebase_url": "https://smart-post-office.firebaseio.com",
+    "project_id": "smart-post-office",
+    "storage_bucket": "smart-post-office.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:747400609565:android:78f227e92f8c80a8",
+        "android_client_info": {
+          "package_name": "com.example.smart_post_office"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "747400609565-bd0as30uan1ru5arrhiqtrf95snslijt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNoTpbJEqlZxwe5LSPChoNE9XjhR0HHrQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
